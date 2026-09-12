@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Liste de Courses</title>
+    
+    <!-- Liens pour la PWA -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#4CAF50">
+    <link rel="apple-touch-icon" href="icon-192.png">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="header-controls">
+            <select id="list-selector"></select>
+            <button id="btn-new-list" class="icon-btn">➕</button>
+            <button id="btn-join-list" class="icon-btn">🔗</button>
+            <button id="btn-share" class="btn-primary">Partager</button>
+        </div>
+    </header>
+
+    <main>
+        <ul id="shopping-list"></ul>
+    </main>
+
+    <footer>
+        <button id="btn-finish" class="btn-danger">Courses terminées</button>
+        <button id="btn-add" class="btn-fab">+</button>
+    </footer>
+
+    <!-- Modale : Recherche et Ajout -->
+    <dialog id="modal-search">
+        <div class="modal-header">
+            <input type="text" id="search-input" placeholder="Rechercher un produit...">
+            <button id="btn-close-modal" class="btn-close">X</button>
+        </div>
+        <ul id="search-results"></ul>
+        
+        <div id="custom-add-container" class="hidden custom-container">
+            <input type="number" id="custom-qty" value="1" min="1" class="input-qty">
+            <button id="btn-add-custom" class="btn-primary" style="flex: 1;">Ajouter "<span id="custom-word"></span>"</button>
+        </div>
+    </dialog>
+
+    <!-- Modale : Nouvelle Liste -->
+    <dialog id="modal-new-list">
+        <div class="modal-header">
+            <h3>Nouvelle liste</h3>
+            <button id="btn-close-new-list" class="btn-close">X</button>
+        </div>
+        <input type="text" id="new-list-name" placeholder="Nom de la liste" style="width: 100%; padding: 10px; box-sizing: border-box; border-radius: 6px; border: 1px solid #ccc;">
+        <button id="btn-confirm-new-list" class="btn-primary" style="margin-top: 15px; width: 100%;">Créer</button>
+    </dialog>
+
+    <!-- Modale : Rejoindre une Liste -->
+    <dialog id="modal-join-list">
+        <div class="modal-header">
+            <h3>Rejoindre une liste</h3>
+            <button id="btn-close-join-list" class="btn-close">X</button>
+        </div>
+        <input type="text" id="join-list-code" placeholder="Code de partage (ex: A1B2C3)" style="width: 100%; padding: 10px; box-sizing: border-box; border-radius: 6px; border: 1px solid #ccc;">
+        <button id="btn-confirm-join" class="btn-primary" style="margin-top: 15px; width: 100%;">Rejoindre</button>
+    </dialog>
+
+    <!-- Modale : Code de Partage -->
+    <dialog id="modal-share">
+        <div class="modal-header">
+            <h3>Liste partagée !</h3>
+            <button id="btn-close-share" class="btn-close">X</button>
+        </div>
+        <p>Donnez ce code à vos amis pour qu'ils rejoignent cette liste :</p>
+        <h2 id="share-code-display" style="text-align: center; letter-spacing: 4px; color: var(--primary); font-size: 32px; margin: 20px 0;">...</h2>
+    </dialog>
+
+    <!-- Modale : Confirmation -->
+    <dialog id="modal-confirm">
+        <div class="confirm-content">
+            <p>Êtes-vous sûr de vouloir réinitialiser la liste ?</p>
+            <div class="confirm-actions">
+                <button id="btn-cancel-reset" class="btn-secondary">Annuler</button>
+                <button id="btn-confirm-reset" class="btn-danger" style="flex: 1; border-radius: 8px;">Oui, vider</button>
+            </div>
+        </div>
+    </dialog>
+
+    <script src="app.js"></script>
+</body>
+</html>
