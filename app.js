@@ -17,7 +17,7 @@ function saveData() {
 }
 
 // --- 2. CONNEXION WEBSOCKET ---
-const socket = new WebSocket('ws://vps-68dd112e.vps.ovh.net:8887');
+const socket = new WebSocket('wss://vps-68dd112e.vps.ovh.net:8887');
 
 socket.addEventListener('open', () => {
     console.log("Connecté au serveur !");
